@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Solar System</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <div class="solar-system">
+        <div class="sun"></div>
+
+        <div class="orbit mercury-orbit">
+            <div class="planet mercury" data-name="Mercury" data-info="Closest to the Sun. Smallest planet."></div>
+        </div>
+
+        <div class="orbit venus-orbit">
+            <div class="planet venus" data-name="Venus" data-info="Second planet. Hottest surface temperature."></div>
+        </div>
+
+        <div class="orbit earth-orbit">
+            <div class="planet earth" data-name="Earth" data-info="Our home planet. Supports life.">
+                <div class="moon-orbit">
+
+                    <div class="moon"></div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="orbit mars-orbit">
+            <div class="planet mars" data-name="Mars" data-info="Known as the Red Planet. May have had water."></div>
+        </div>
+
+        <div class="orbit jupiter-orbit">
+            <div class="planet jupiter" data-name="Jupiter" data-info="Largest planet. Has a big red storm."></div>
+        </div>
+
+        <div class="orbit saturn-orbit">
+            <div class="planet saturn" data-name="Saturn" data-info="Famous for its ring system."></div>
+        </div>
+
+        <div class="orbit uranus-orbit">
+            <div class="planet uranus" data-name="Uranus" data-info="Rotates sideways. Light blue gas giant."></div>
+        </div>
+
+        <div class="orbit neptune-orbit">
+            <div class="planet neptune" data-name="Neptune" data-info="Furthest from the Sun. Strongest winds."></div>
+        </div>
+
+    </div>
+    <div class="zoom-controls">
+        <button onclick="zoom(0.9)">➖ Zoom Out</button>
+        <button onclick="zoom(1.1)"> ➕ Zoom In</button>
+        <button onclick="toggleMusic()" id="music-toggle">🔊</button>
+
+    </div>
+
+    <div class="tooltip" id="tooltip"></div>
+    <audio id="bg-music" autoplay loop>
+  <source src="./images/bgmusic.mp3" type="audio/mpeg" />
+  Your browser does not support the audio element.
+</audio>
+
+    <div class="shooting-stars"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
