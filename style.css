@@ -1,0 +1,331 @@
+/* Reset and basic layout */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: url('./images/8k_stars_milky_way.jpg') center/cover no-repeat;
+    height: 100vh;
+    overflow: hidden;
+    font-family: sans-serif;
+}
+
+.solar-system {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    transform-origin: center center;
+    transition: transform 0.3s ease;
+    /* background-color: black; */
+}
+
+
+/* Sun */
+
+.sun {
+    width: 12vmin;
+    height: 12vmin;
+    background: radial-gradient(circle, yellow, orange, red);
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 40px yellow;
+}
+
+
+/* Orbit Rings */
+
+.orbit {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: 1px dashed rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+
+/* Planet common styles */
+
+.planet {
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+
+/* Planet Tooltips */
+
+.planet::after {
+    content: attr(data-name);
+    position: absolute;
+    top: -2vmin;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.8);
+    color: #000;
+    padding: 0.2vmin 0.5vmin;
+    font-size: 1vmin;
+    border-radius: 3px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+.planet:hover::after {
+    opacity: 1;
+}
+
+
+/* Planet orbits and animation speeds (approximate to scale) */
+
+.mercury-orbit {
+    width: 17vmin;
+    height: 17vmin;
+    animation: rotate 8s linear infinite;
+}
+
+.mercury {
+    width: 3vmin;
+    height: 3vmin;
+    background: gray;
+}
+
+.venus-orbit {
+    width: 22vmin;
+    height: 22vmin;
+    animation: rotate 20s linear infinite;
+}
+
+.venus {
+    width: 2.8vmin;
+    height: 2.8vmin;
+    background: #e3c16f;
+}
+
+.earth-orbit {
+    width: 30vmin;
+    height: 30vmin;
+    animation: rotate 30s linear infinite;
+}
+
+.earth {
+    width: 6vmin;
+    height: 6vmin;
+    background: #2e9afe;
+    position: relative;
+}
+
+
+/* Earth's Moon */
+
+.moon-orbit {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 8vmin;
+    height: 8vmin;
+    border: 1px dotted rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: rotate 5s linear infinite;
+}
+
+.moon {
+    width: 1vmin;
+    height: 1vmin;
+    background: #ddd;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(-50%, -50%);
+}
+
+.mars-orbit {
+    width: 39vmin;
+    height: 39vmin;
+    animation: rotate 45s linear infinite;
+}
+
+.mars {
+    width: 4vmin;
+    height: 4vmin;
+    background: #c1440e;
+}
+
+.jupiter-orbit {
+    width: 49vmin;
+    height: 49vmin;
+    animation: rotate 60s linear infinite;
+}
+
+.jupiter {
+    width: 8vmin;
+    height: 8vmin;
+    background: #d7a65f;
+}
+
+.saturn-orbit {
+    width: 64vmin;
+    height: 64vmin;
+    animation: rotate 80s linear infinite;
+}
+
+.saturn {
+    width: 7vmin;
+    height: 7vmin;
+    background: #deb887;
+}
+
+.uranus-orbit {
+    width: 79vmin;
+    height: 79vmin;
+    animation: rotate 100s linear infinite;
+}
+
+.uranus {
+    width: 6vmin;
+    height: 6vmin;
+    background: #8fdde7;
+}
+
+.neptune-orbit {
+    width: 94vmin;
+    height: 94vmin;
+    animation: rotate 120s linear infinite;
+}
+
+.neptune {
+    width: 8vmin;
+    height: 8vmin;
+    background: #4169e1;
+}
+
+
+/* Orbit animation keyframe */
+
+@keyframes rotate {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+
+/* Zoom Controls */
+
+.controls {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    z-index: 1000;
+}
+
+.controls button {
+    background: #ffffff;
+    border: none;
+    padding: 0.6rem 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-right: 0.5rem;
+    border-radius: 6px;
+    transition: background 0.3s;
+}
+
+.controls button:hover {
+    background: #dddddd;
+}
+
+.zoom-controls {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+}
+
+.zoom-controls button {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid white;
+    padding: 6px 10px;
+    margin-left: 6px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.tooltip {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 14px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    z-index: 1;
+    max-width: 220px;
+    white-space: pre-line;
+}
+
+.planet {
+    animation: spin 20s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: translateX(-50%) rotate(0deg);
+    }
+    to {
+        transform: translateX(-50%) rotate(360deg);
+    }
+}
+
+.shooting-stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.shooting-star {
+    position: absolute;
+    width: 2px;
+    height: 100px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
+    box-shadow: 0 0 6px 2px rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    opacity: 0.9;
+    transform-origin: top left;
+    animation: shoot linear forwards;
+    pointer-events: none;
+}
+
+@keyframes shoot {
+    0% {
+        transform: translate(0, 0) rotate(var(--angle));
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--x), var(--y)) rotate(var(--angle));
+        opacity: 0;
+    }
+}
